@@ -2,14 +2,14 @@
 <div class="header_body">
     <h1>ZARA</h1>
     <div class="body_h">
-    <select class="dropdown"  id='myDropdown' v-model='filtersApplied.dropDownEl'>
+         <!-- <select class="dropdown"  id='myDropdown' v-model='filtersApplied.dropDownEl'>
         <option value="all" >All</option>
         <option value="women">Women</option>
         <option value="men">Men</option>
         <option value="children">Children</option>
     </select>
-    <input class="search" v-model="filtersApplied.search">
-        
+    <input class="search" v-model="filtersApplied.search"> -->
+    <Filter/>
        <ul class="new_pages"> 
         <li><router-link to="/signup">
             <img src="../assets/pictures/login.png" class="img-w-h"/></router-link>
@@ -23,30 +23,15 @@
             <p class="flag">{{basket.length}}</p>
           </button>
           <div v-if="isActive" class="div-basket">
-            <table>
-                <thead>
-                  <tr>
-                    <th>Proizvod</th>
-                    <th>Cijena</th>
-                  </tr>
-                </thead>
-                <tbody v-for="artical in basket" :key="artical.id">
-                  <Cart :artical="artical"/>
-                </tbody>
-                <button class="btn-cart" >Buy!</button>
-                <button v-on:click="removeBasket(artical)" class="btn-cart">Clear</button>
-            </table>
+            <Cart :basket="basket" @button-event="processingButtonEvent"/>
           </div>
-
         </li>
        </ul>
-       
-       
   </div>
 </div>
-<!-- <div class="all_img" id="all_product" v-for="artical in articals" :key="artical.id" > -->
+<!-- <div class="all_img" id="all_product" v-for="artical in articals" :key="artical.id" > v-for="artical in allFilters()" -->
  <div  class="all_img" id="all_product" >
-<div class="shopping-products" v-for="artical in allFilters()" :key="artical.id">
+<div class="shopping-products"  v-for="artical in allFilters()" :key="artical.id">
   <Artical :artical="artical"/>
   <button v-on:click="addToBasket(artical)" class="btn">Add to cart</button>
   <br>
@@ -61,7 +46,8 @@
 import Footer from '../components/Footer.vue'
 import Artical from '../components/Artical.vue';
 //import Searchbar from './components/Searchbar.vue'
-import Cart from '../components/Cart';
+import Cart from '../components/Cart.vue';
+import Filter from '../components/Filter.vue';
 
 
  const articles = [
@@ -143,11 +129,13 @@ export default {
    
   name: 'App',
   components: {
+    Filter,
     // Searchbar,
     //DropDown,
     Footer,
     Artical,
     Cart,
+    
   },
  
   methods: {  
@@ -181,7 +169,21 @@ export default {
     },
     removeBasket(artical){
       this.basket.splice(artical);
+    },
+    processingButtonEvent({operacija, artical}){
+      console.log(operacija)
+      switch (operacija) {
+        case "clear":
+          this.removeBasket(this.basket)
+          break;
+      case "remove":
+          this.basket.splice(artical,1)
+          break;
+        default:
+          break;
+      }
     }
+   
   }
     };
 </script>
@@ -250,29 +252,7 @@ h1 {
   text-align: center;
   color: black;
 }
-.search {
-    width: 10%;
-    position: relative;
-    display: flex;
-    top: -53px;
-    left: 1%;
-    height: 1%;
-    /* flex-grow: 2; */
-    flex-grow: 0.2;
-}
-.dropdown {
-  display: flex;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  width: 5%;
-  height: 20px;
-  position: relative;
-  top: -52px;
-  left: 1%;
-  justify-content: flex-start;
-  background-color:#f44336;
-  font-variant: small-caps;
-  flex-grow: 0.2;
-}   
+
 .shopping-products{
   width: 30%;
   height: 20%;

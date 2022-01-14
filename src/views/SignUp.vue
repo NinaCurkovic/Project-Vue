@@ -3,90 +3,73 @@
     <router-link class="home_signup" to="/">HOME</router-link>
     <br>
     <br>
-   <div id="main">
-   <div >
-      <div class="sign_up">
-         <tr>
-            <!-- <td >Name </td> -->
-            <br>
-            <td><input type="text" placeholder="Enter user here" id="t1" class="sirina" style="text-align: center;" /></td>
-            <div id ="error_name"></div>
-            </tr>
-            <br><br>
-            <tr>
-            <!-- <td>E-mail </td> -->
-            <br>
-            <td><input type="text" placeholder="Enter e-mail here" id="t2" class="sirina" style="text-align: center;" /></td>
-            <div id ="error_email"></div>
-            </tr>
-            <br><br>
-            <tr>
-            <!-- <td >Username </td> -->
-            <br>
-            <td><input type="text" placeholder="Enter Username here" id="t3" class="sirina" style="text-align: center;" /></td>
-            <div id ="error_username"></div>
-            </tr>
-            <br><br>
-            <tr>
-            <!-- <td >Password </td> -->
-            <br>
-            <td><input type="password" placeholder="Enter Password here" id="t4" class="sirina" style="text-align: center;" /></td>
-            <div id ="error_pass"></div>
-            </tr>
-            <br><br>
-            <tr>
-            <!-- <td>Confirm Password </td> -->
-            <br>
-            <td><input type="password" placeholder="Enter Password here" id="t5" class="sirina" style="text-align: center;" /></td>
-            <div id ="error_cpass"></div>
-            </tr>
-            <br>
-            <tr>
-            <br>
-            <td>
-            <input class="btn_singin" type="reset" value="Clear" v-on:click="clearFunc()" id="res" />
-            <input class="btn_singin" type="submit" value="Next!" v-on:click="registration()" /></td>
-            </tr>
-      </div>
-   </div>
-   </div>
+  <form id="app" @submit="checkForm" action="/something" method="post" >
+  <div>
+    <p v-if="errors.length">
+    <b>Please correct the following error(s):</b>
+    <ul>
+      <li v-for="error in errors" :key="error.id">{{ error }}</li>
+    </ul>
+  </p>
+  <p>
+    <label for="name"></label>
+    <input type="text" name="name" id="name" placeholder="Enter Name here" v-model="name" class="sirina">
+  </p>
+   <p>
+    <label for="email"></label>
+    <input type="email" name="email" id="email" placeholder="Enter Email here" v-model="email" class="sirina">
+  </p>
+  <p>
+    <label for="username"></label>
+    <input type="text" name="username" id="username" placeholder="Enter Username here" v-model="username" class="sirina">
+  </p>
+  <p>
+    <label for="password"></label>
+    <input type="password" name="password" id="password" placeholder="Enter Password here" v-model="password" class="sirina">
+  </p>
+  <p>
+    <label for="cpassword"></label>
+    <input type="password" name="cpassword" id="cpassword" placeholder="Enter Confirm Password here" v-model="cpassword" class="sirina">
+  </p>
+  <p>
+    <input class="btn_singin" type="reset" value="Clear" v-on:click="clearFunc()" id="res" />
+    <input class="btn_singin" type="submit" value="Next!" />
+  </p>
+  </div>
+</form>
 </template>
-
 <script>
-
     export default {
         name: 'SignUp',
         data() {
             return {
-                
+                errors:[],
+                name:null,
+                email: null,
+                username: null,
+                pasword:null,
+                cpasword:null
             }
         },
-        methods: {
-           clearFunc(){
-                document.getElementById("t1").value="";
-                document.getElementById("t2").value="";
-                document.getElementById("t3").value="";
-                document.getElementById("t4").value="";
-                document.getElementById("t5").value="";
-
-                document.getElementById('error_name').innerHTML='';
-                document.getElementById('error_email').innerHTML='';
-                document.getElementById('error_username').innerHTML='';
-                document.getElementById('error_pass').innerHTML='';
-                document.getElementById('error_cpass').innerHTML='';
-           }
+  methods:{
+    checkForm:function(e) {
+      if(this.name && this.email && this.username && this.pasword) return true;
+      this.errors = [];
+      if(!this.name) this.errors.push("Name required.");
+      if(!this.email) this.errors.push("Email required.");
+      if(!this.username)this.errors.push("Username required.");
+      if(!this.pasword)this.errors.push("Password required");
+      if(!this.cpasword) this.errors.push("cpasword required.");
+      e.preventDefault();
+    },
+    clearFunc(){
      
-    }}
+    }
+
+  }
+}
 </script>
 <style>
-.sign_up 
-{
- flex-direction: row;
- justify-content: center;
- left: 35%;
- position: relative;
- text-align: center;
-}
 .home_signup{
   display: flex;
   justify-content: left;
@@ -111,4 +94,8 @@
 .sirina{
   width: 400px;
 }
+div{
+  justify-content: center;
+}
+
 </style>
