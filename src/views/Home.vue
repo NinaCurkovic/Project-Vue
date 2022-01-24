@@ -9,7 +9,7 @@
         <option value="children">Children</option>
     </select>
     <input class="search" v-model="filtersApplied.search"> -->
-    <Filter/>
+    <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction"/>
        <ul class="new_pages"> 
         <li><router-link to="/signup">
             <img src="../assets/pictures/login.png" class="img-w-h"/></router-link>
@@ -18,14 +18,17 @@
             <img src="../assets/pictures/help2.png" class="img-w-h"/></router-link>
         </li>
         <li>
-          <button v-on:click="isActive=!isActive;" class="img-w-h">
+          <button v-on:click="isActive=!isActive;"  class="img-w-h">
             <img src="../assets/pictures/cart2.png" style="width: 31px"/>
             <p class="flag">{{basket.length}}</p>
           </button>
-          <div v-if="isActive" class="div-basket">
+          <div v-show="basket.length>0" class="div-basket">
             <Cart :basket="basket" @button-event="processingButtonEvent"/>
           </div>
-        </li>
+          <div v-show="basket.length===0">
+          </div>
+          
+          </li>
        </ul>
   </div>
 </div>
@@ -123,7 +126,9 @@ export default {
       articlesNew: articles,
       filtersApplied: {search:null, dropDownEl:'all'},
       isActive: false,
+      verified: false,
       basket:[],
+      
     }
   },
    
@@ -135,9 +140,7 @@ export default {
     Footer,
     Artical,
     Cart,
-    
   },
- 
   methods: {  
     allFilters() {
       if (this.filtersApplied.search) {
@@ -149,15 +152,15 @@ export default {
         });
       } 
       if(this.filtersApplied.dropDownEl){
-        let val=this.filtersApplied.dropDownEl;
-         if (val == 'all') 
+        
+         if (this.filtersApplied.dropDownEl == 'all') 
         {
           this.articlesNew = articles;
         }
         else
         {
           let test = this.articlesNew
-              .filter((artical) => artical.category === val)
+              .filter((artical) => artical.category === this.filtersApplied.dropDownEl)
             this.articlesNew = test;
           }
       }
@@ -182,10 +185,14 @@ export default {
         default:
           break;
       }
+    },
+    dropDownFunction(value){
+      this.filtersApplied.dropDownEl = value;
+    },
+    searchFunction(value){
+      this.filtersApplied.search = value;
     }
-   
-  }
-    };
+    }};
 </script>
 <style>
 
@@ -196,6 +203,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.header_body{
+  position: fixed;
+  width: 100%;
 }
 .img-w-h{
   width: 40px;
@@ -230,9 +241,10 @@ h1 {
  justify-content: space-between;
 }
 .all_img{
-  position: relative;
+  position: static;
   display: inline-block;
   left: 1%;
+  margin-top: 100px;
 }
 .btn{
   background-color: rgba(255, 255, 255, 0.404);

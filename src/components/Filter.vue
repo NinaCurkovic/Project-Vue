@@ -1,6 +1,6 @@
 <template>
 <div>
-    <select class="dropdown"  id='myDropdown' @change="switchSelect($event)" >
+    <select class="dropdown"  id='myDropdown' @change='swichDropDownValue($event)' >
         <!-- v-model='filtersApplied.dropDownEl' -->
         <option value="all" >All</option>
         <option value="women">Women</option>
@@ -8,7 +8,8 @@
         <option value="children">Children</option>
     </select>
     
-    <input class="search" >
+    <input class="search" v-model="searchInputData">
+    
     <!-- v-model="filtersApplied.search" -->
     
 </div>
@@ -17,12 +18,22 @@
 <script>
 export default{
 	name:"Filter",
-	props: ['articlesNew'],
+	props: ['artical'],
+
     data() {
     return {
+      searchInputData: '',
     };
   },
     methods: {
+      swichDropDownValue(e){
+        this.$emit("filterDropDown",e.target.value)
+      }
+    },
+    watch: {
+      searchInputData(newValue){
+        this.$emit("filterSearch",newValue)
+      }
     }
   }
 </script>
