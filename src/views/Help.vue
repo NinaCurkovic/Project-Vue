@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>HELP</h1>
+    <h1 class="h1">HELP</h1>
     <router-link to="/" class="home-link">HOME</router-link>
 </div>
      <div class="home_help">
@@ -35,5 +35,9 @@ export default {
   margin-top: -52px;
   margin-left: 20px;
   font-variant: small-caps;
+}
+.h1{
+  margin-top: -5%;
+  width: 100%;
 }
 </style>

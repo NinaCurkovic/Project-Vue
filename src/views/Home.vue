@@ -2,13 +2,6 @@
 <div class="header_body">
     <h1>ZARA</h1>
     <div class="body_h">
-         <!-- <select class="dropdown"  id='myDropdown' v-model='filtersApplied.dropDownEl'>
-        <option value="all" >All</option>
-        <option value="women">Women</option>
-        <option value="men">Men</option>
-        <option value="children">Children</option>
-    </select>
-    <input class="search" v-model="filtersApplied.search"> -->
     <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction"/>
        <ul class="new_pages"> 
         <li><router-link to="/signup">
@@ -18,22 +11,22 @@
             <img src="../assets/pictures/help2.png" class="img-w-h"/></router-link>
         </li>
         <li>
-          <button v-on:click="isActive=!isActive;"  class="img-w-h">
+          <button  @click="isActive = !isActive" v-show="!verified" class="img-w-h">
             <img src="../assets/pictures/cart2.png" style="width: 31px"/>
             <p class="flag">{{basket.length}}</p>
           </button>
-          <div v-show="basket.length>0" class="div-basket">
+          <div v-show="isActive">
+          <div v-show="basket.length>0 " class="div-basket">
             <Cart :basket="basket" @button-event="processingButtonEvent"/>
           </div>
           <div v-show="basket.length===0">
           </div>
-          
+          </div>
           </li>
        </ul>
   </div>
 </div>
-<!-- <div class="all_img" id="all_product" v-for="artical in articals" :key="artical.id" > v-for="artical in allFilters()" -->
- <div  class="all_img" id="all_product" >
+<div  class="all_img" id="all_product" >
 <div class="shopping-products"  v-for="artical in allFilters()" :key="artical.id">
   <Artical :artical="artical"/>
   <button v-on:click="addToBasket(artical)" class="btn">Add to cart</button>
@@ -45,10 +38,8 @@
 
 </template>
 <script>
-//import DropDown from './components/DropDown.vue'
 import Footer from '../components/Footer.vue'
 import Artical from '../components/Artical.vue';
-//import Searchbar from './components/Searchbar.vue'
 import Cart from '../components/Cart.vue';
 import Filter from '../components/Filter.vue';
 
@@ -135,8 +126,6 @@ export default {
   name: 'App',
   components: {
     Filter,
-    // Searchbar,
-    //DropDown,
     Footer,
     Artical,
     Cart,
@@ -168,7 +157,6 @@ export default {
     },
     addToBasket(artical){
       this.basket.push(artical);
-      // console.log(this.basket);
     },
     removeBasket(artical){
       this.basket.splice(artical);
@@ -207,6 +195,7 @@ export default {
 .header_body{
   position: fixed;
   width: 100%;
+  top: -22px;
 }
 .img-w-h{
   width: 40px;
@@ -244,16 +233,19 @@ h1 {
   position: static;
   display: inline-block;
   left: 1%;
-  margin-top: 100px;
+
 }
 .btn{
+  border-radius: 10%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   background-color: rgba(255, 255, 255, 0.404);
   color: black; 
   border: 2px solid #f44336;
-  position: relative;
-  display: block;
+  position: inherit;
+  display: inline;
   left: 40%;
   text-decoration: none;
+  cursor: pointer;
 }
 .btn:hover, .clear-button:hover, .buy-cart:hover {
   background-color: #f44336;
@@ -276,12 +268,26 @@ h1 {
   top: -60px;
 }
 .btn-cart {
+  border-radius: 10%;
   background-color: #f44336;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  border-radius: 50%;
-  /* padding: 5px 10px; */
-  text-decoration: none;
-  color: white;
+  margin-left: 7%;
+  justify-items: center;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  cursor: pointer;
+}
+.btn-buy{
+  border-radius: 10%;
+  background-color: #2E8B57;
+  margin-left: 7%;
+  justify-items: center;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  cursor: pointer;
+}
+.btn-x{
+  border: none;
+  background-color: white;
+  float: right;
+  cursor: pointer;
 }
 .flag {
     position: absolute;
@@ -300,8 +306,8 @@ h1 {
   position: absolute;
   background: #fff;
   border: 20px black;
-  width: 200px;
+  width: 250px;
   right: 1%;
-  font-size: 50%;
+  font-size: 70%;
 }
 </style>

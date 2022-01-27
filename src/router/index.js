@@ -1,7 +1,5 @@
 import {createWebHistory, createRouter} from "vue-router";
 
-//import Searchbar from '../components/Searchbar.vue';
-//import DropDown from '../components/DropDown.vue';
 import Filter from '../components/Filter.vue';
 import Footer from '../components/Footer.vue';
 import Cart from '../components/Cart.vue';
@@ -21,11 +19,6 @@ const routes = [
         name: 'Filter',
         component: Filter,
     },
-    // {
-    //     path: '/searchbar',
-    //     name: 'Searchbar',
-    //     component: Searchbar,
-    // },
     {
         path: '/footer',
         name: 'Footer',
@@ -46,9 +39,6 @@ const routes = [
         name: 'Help',
         component: Help,
     },
-   
-   
-   
 ];
 
 const router = createRouter({

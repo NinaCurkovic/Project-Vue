@@ -1,5 +1,5 @@
 <template>
-    <h1>SIGN IN</h1>
+    <h1 class="h1">SIGN IN</h1>
     <router-link class="home_signup" to="/">HOME</router-link>
     <br>
     <br>

@@ -54,26 +54,6 @@ export default{
     }
     },
   };
-
-	// function validateEmail(){
-	// 	var email1= document.getElementById("email1").value;
-	// 	var filter1 = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	// 	if(email1=='')
-	// 	{
-	// 		alert("Please enter your user email");
-	// 	}
-	// 	else if (!filter1.test(email1))
-	// 	{
-	// 		alert("Invalid email");
-	// 	}
-	// 	else
-	// 	{				                            
-	// 		alert('Thank You!');
-	// 		window.location = "../App.vue"; 
-	// 	}
-	// } 
-
-  
   
 </script>
 <style>
@@ -99,23 +79,11 @@ export default{
   height: 40px;
 }
 .newsletter-btn{
-  display: inline-block;
-  height: 38 px;
-  padding: 0 30 px;
-  color: #555;
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 3px;
-  font-weight: 600;
-  line-height: 38px;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: transparent;
-  border-radius: 4 px;
-  border: 1 px solid #bbb;
+  justify-items: center;
+  border-radius: 10%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  border-radius: 10%;
+  margin-left: 0%;
   cursor: pointer;
-  box-sizing: border-box;
 }
-
 </style>

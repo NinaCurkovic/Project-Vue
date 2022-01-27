@@ -1,19 +1,13 @@
 <template>
 <div>
     <select class="dropdown"  id='myDropdown' @change='swichDropDownValue($event)' >
-        <!-- v-model='filtersApplied.dropDownEl' -->
         <option value="all" >All</option>
         <option value="women">Women</option>
         <option value="men">Men</option>
         <option value="children">Children</option>
     </select>
-    
     <input class="search" v-model="searchInputData">
-    
-    <!-- v-model="filtersApplied.search" -->
-    
 </div>
-
 </template>
 <script>
 export default{
@@ -39,13 +33,12 @@ export default{
 </script>
 <style>
 .search {
-    width: 55%;
+    width: 65%;
     position: relative;
     display: flex;
     top: -70px;
-    left: 46%;
+    left: 48%;
     height: 20%;
-    /* flex-grow: 2; */
     flex-grow: 0.2;
 }
 .dropdown {
