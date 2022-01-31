@@ -212,6 +212,7 @@ h1 {
   } 
   body {
     background-image: linear-gradient(to right, rgb(255, 255, 255) , rgb(31, 30, 30));
+    
   }
 
  .new_pages {
@@ -310,4 +311,50 @@ h1 {
   right: 1%;
   font-size: 70%;
 }
+@media only screen and (max-width:480px) {
+  /* For mobile phones: */
+  .shopping-products {
+    width: 100%;
+    height: 20%;
+  }
+  .body{
+    width: max-content;
+  }}
+
+
+
+@media only screen and (max-width:480px) {
+  /* For mobile phones: */
+   h1 {
+    justify-content: left;
+  }
+    .header_body{
+    position: fixed;
+    width: 100%;
+    top: -22px;
+  }
+  .new_pages{
+    right: 10%;
+    position: relative;
+    top: -72px;
+  }
+   .search {
+    left: 37%;
+    width: 45%;
+    height: 22%;
+    top: -39px;
+  }
+   .all_img {
+    justify-items: center;
+    margin: 2%;
+    padding: 2%;
+  }
+   .dropdown {
+    width: 35%;
+    top: -22px;
+    font-size: small;
+    height: 32%;
+    text-align: -webkit-center;
+}
+  }
 </style>

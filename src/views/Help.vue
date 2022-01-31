@@ -5,7 +5,7 @@
 </div>
      <div class="home_help">
    </div>
-   <p><b><i>On the Zara.com page, you can purchase as a GUEST or as a REGISTERED customer.<br><br>
+   <p class="help_text"><b><i>On the Zara.com page, you can purchase as a GUEST or as a REGISTERED customer.<br><br>
 
       Registration is very simple. We will only ask you for the information necessary
       to facilitate the purchase process.<br><br>
@@ -27,7 +27,7 @@ export default {
 <style>
 .img_help{
   justify-content: center;
-  width: 700px;
+  
 }
 .home-link{
   display: flex;
@@ -37,7 +37,26 @@ export default {
   font-variant: small-caps;
 }
 .h1{
-  margin-top: -5%;
+  margin-top: -6%;
   width: 100%;
+  justify-content: center;
 }
+@media only screen and (max-width:480px) {
+  /* For mobile phones: */
+  .img_help {
+    width: 80%;
+    height: 20%;
+  }
+  .h1{
+    font-size: 80%;
+    margin-top: -20%;
+  }
+  .home-link{
+    font-size: 7px;
+  }
+  .help_text{
+    margin-top: 15%;
+    font-size: 70%;
+  }
+  }
 </style>
