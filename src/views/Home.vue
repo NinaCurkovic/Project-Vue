@@ -13,13 +13,13 @@
         <li>
           <button  @click="isActive = !isActive" v-show="!verified" class="img-w-h">
             <img src="../assets/pictures/cart2.png" style="width: 31px"/>
-            <p class="flag">{{basket.length}}</p>
+            <p class="flag"> {{ basketQuantity }}</p>
           </button>
           <div v-show="isActive">
-          <div v-show="basket.length>0 " class="div-basket">
+          <div v-show="basketQuantity>0 " class="div-basket">
             <Cart :basket="basket" @button-event="processingButtonEvent"/>
           </div>
-          <div v-show="basket.length===0">
+          <div v-show="basketQuantity===0">
           </div>
           </div>
           </li>
@@ -51,7 +51,8 @@ import Filter from '../components/Filter.vue';
           description: 'LONG DRESS LIMITED EDITION',
           price: 699.90,
           id: 1,
-          category: 'women'
+          category: 'women',
+          quantity: 0,
         },
         {
           picture: 'women2.jpg',
@@ -59,7 +60,8 @@ import Filter from '../components/Filter.vue';
           description: 'PLEATED DRESS LIMITED EDITION',
           price: 699.90,
           id: 2,
-          category: 'women'
+          category: 'women',
+          quantity: 0,
         },
         {
           picture: 'women3.jpg',
@@ -67,7 +69,8 @@ import Filter from '../components/Filter.vue';
           description: 'DRESS LIKE A LIMITED EDITION ROBE',
           price: 699.90,
           id: 3,
-          category: 'women'
+          category: 'women',
+          quantity: 0,
         },
         {
           picture: 'men3.jpg',
@@ -75,7 +78,8 @@ import Filter from '../components/Filter.vue';
           description: 'TEXTURED EASY CARE SHIRT',
           price: 149.90,
           id: 4,
-          category: 'men'
+          category: 'men',
+          quantity: 0,
         },
         {
           picture: 'men2.jpg',
@@ -83,7 +87,8 @@ import Filter from '../components/Filter.vue';
           description: 'HERRINGBONE PATTERNED SHIRT',
           price: 499.90,
           id: 5,
-          category: 'men'
+          category: 'men',
+          quantity: 0,
         },
         {
           picture: 'men1.jpg',
@@ -91,7 +96,8 @@ import Filter from '../components/Filter.vue';
           description: 'OVERSIZED COAT',
           price: 1599.90,
           id: 6,
-          category: 'men'
+          category: 'men',
+          quantity: 0,
         },
         {
           picture: 'children2.jpg',
@@ -99,7 +105,8 @@ import Filter from '../components/Filter.vue';
           description: 'SPARKLY MOTORCYCLE JACKET',
           price: 499.90,
           id: 7,
-          category: 'children'
+          category: 'children',
+          quantity: 0,
         },
         {
           picture: 'children1.jpg',
@@ -107,7 +114,8 @@ import Filter from '../components/Filter.vue';
           description: 'STAR-CAUSE DRESS',
           price: 299.90,
           id: 8,
-          category: 'children'
+          category: 'children',
+          quantity: 0,
         }
       ]
 export default {
@@ -119,7 +127,8 @@ export default {
       isActive: false,
       verified: false,
       basket:[],
-      
+      quantity: 1,
+      basketQuantity: 0,
     }
   },
    
@@ -156,11 +165,20 @@ export default {
         return this.articlesNew;
     },
     addToBasket(artical){
-      this.basket.push(artical);
+      if (this.basket.includes(artical)){
+        artical.quantity += 1;
+        this.basketQuantity +=1;
+      }
+      else{
+        this.basket.push(artical);
+        artical.quantity += 1;
+        this.basketQuantity +=1;
+      }
     },
     removeBasket(artical){
       this.basket.splice(artical);
     },
+    
     processingButtonEvent({operacija, artical}){
       console.log(operacija)
       switch (operacija) {
@@ -168,10 +186,18 @@ export default {
           this.removeBasket(this.basket)
           break;
       case "remove":
-          this.basket.splice(artical,1)
+         if (artical.quantity == 1){
+          // this.basket.splice(artical,1)
+          this.basket.splice(this.basket.indexOf(artical), 1);
+          this.basketQuantity -=1;
+        }
+        else{
+          artical.quantity -=1;
+          this.basketQuantity -=1;
+        }
           break;
-        default:
-          break;
+        
+          // this.artical.splice(this.artical.indexOf(artical), 1);
       }
     },
     dropDownFunction(value){

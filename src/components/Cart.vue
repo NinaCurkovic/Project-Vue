@@ -9,9 +9,9 @@
         </thead>
         <tbody v-for="artical in basket" :key="artical.id">
           <tr>
-          <th>{{artical.description}}</th>
+          <th>{{artical.quantity}}x {{artical.description}}</th>
           <th>{{artical.price}}</th>
-          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x">X</button></th>
+          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x" >X</button></th>
           </tr>
         </tbody>
         <div class="two-btn">
@@ -27,7 +27,7 @@
 <script>
 export default {
   name: "Cart",
-  props: ['basket'],
+  props: ['basket', 'quantity'],
   emits: ['buttonEvent'],
   data() {
     return {
