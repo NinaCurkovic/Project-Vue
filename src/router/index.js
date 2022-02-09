@@ -6,6 +6,7 @@ import Cart from '../components/Cart.vue';
 import SignUp from '../views/SignUp.vue'
 import Home from '../views/Home.vue';
 import Help from '../views/Help.vue'
+import Products from '../views/Products.vue'
 
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
         name: 'Help',
         component: Help,
     },
+    {
+        path: '/products',
+        name: 'Products',
+        component: Products,
+    }
 ];
 
 const router = createRouter({

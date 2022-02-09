@@ -2,7 +2,7 @@
 
   <img :src="require(`@/assets/pictures/${artical.picture}`)" class="img">
   <p>{{artical.description}}</p>
-  <p>{{artical.price}} KN</p>
+  <p>{{artical.price}} $</p>
   
   <br>
 </template>

@@ -11,7 +11,7 @@
           <tr>
           <th>{{artical.quantity}}x {{artical.description}}</th>
           <th>{{artical.price}}</th>
-          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x" >X</button></th>
+          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x" ><fa icon="trash"></fa></button></th>
           </tr>
         </tbody>
         <div class="two-btn">
@@ -27,7 +27,7 @@
 <script>
 export default {
   name: "Cart",
-  props: ['basket', 'quantity'],
+  props: ['basket'],
   emits: ['buttonEvent'],
   data() {
     return {
@@ -39,14 +39,14 @@ export default {
 
 <style>
 .table{
-  font-size: 120%;
-  text-align: left;
-  margin: 1%;
+  font-size: 90%;
+    text-align: left;
+    margin: 5%;
+    word-spacing: 10px;
 }
 .two-btn{
   justify-items: center;
-  margin-left: 40%;
   font-family: Arial, Helvetica, sans-serif;
-  margin-left: -5%;
+  
 }
 </style>

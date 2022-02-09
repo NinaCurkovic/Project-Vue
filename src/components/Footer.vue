@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="body-footer">
     <hr>
     <br>
     <br>
@@ -85,5 +85,8 @@ export default{
   border-radius: 10%;
   margin-left: 0%;
   cursor: pointer;
+}
+.body-footer{
+  background-color: darkgray;
 }
 </style>

@@ -1,386 +1,82 @@
 <template>
-<div class="header_body">
-    <h1>ZARA</h1>
-    <div class="body_h">
-    <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction"/>
-       <ul class="new_pages"> 
-        <li><router-link to="/signup">
-            <img src="../assets/pictures/login.png" class="img-w-h"/></router-link>
-        </li>
-        <li><router-link to="/help">
-            <img src="../assets/pictures/help2.png" class="img-w-h"/></router-link>
-        </li>
-        <li>
-          <button  @click="isActive = !isActive" v-show="!verified" class="img-w-h">
-            <img src="../assets/pictures/cart2.png" style="width: 31px"/>
-            <p class="flag"> {{ basketQuantity }}</p>
-          </button>
-          <div v-show="isActive">
-          <div v-show="basketQuantity>0 " class="div-basket">
-            <Cart :basket="basket" @button-event="processingButtonEvent"/>
-          </div>
-          <div v-show="basketQuantity===0">
-          </div>
-          </div>
-          </li>
-       </ul>
-  </div>
+<div class="b">
+  <p class="shipping1"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
+    <h1>SOAPS & CANDLES</h1>
+     <div class="home_help">
+   </div>
+      <div class="img1"><p class="txt">HANDCRAFTED ORGANIC SOAPS & CANDLES</p>
+     <router-link to="/products" class="btnH"><button class="btn1">Shop Now</button></router-link>
+     </div>
+     <div class="img2"><p class="txt2">JUST LIKE NATURE INTENDED</p></div>
+      <br>
 </div>
-<div  class="all_img" id="all_product" >
-<div class="shopping-products"  v-for="artical in allFilters()" :key="artical.id">
-  <Artical :artical="artical"/>
-  <button v-on:click="addToBasket(artical)" class="btn">Add to cart</button>
-  <br>
-  <br>
-</div>
-</div>
-<Footer/> 
-
 </template>
 <script>
-import Footer from '../components/Footer.vue'
-import Artical from '../components/Artical.vue';
-import Cart from '../components/Cart.vue';
-import Filter from '../components/Filter.vue';
 
-
- const articles = [
-        {
-          picture: 'women1.jpg',
-          namePicture: 'Zenska_haljina1',
-          description: 'LONG DRESS LIMITED EDITION',
-          price: 699.90,
-          id: 1,
-          category: 'women',
-          quantity: 0,
-        },
-        {
-          picture: 'women2.jpg',
-          namePicture: 'Zenska_haljina2',
-          description: 'PLEATED DRESS LIMITED EDITION',
-          price: 699.90,
-          id: 2,
-          category: 'women',
-          quantity: 0,
-        },
-        {
-          picture: 'women3.jpg',
-          namePicture: 'Zenska_haljina3',
-          description: 'DRESS LIKE A LIMITED EDITION ROBE',
-          price: 699.90,
-          id: 3,
-          category: 'women',
-          quantity: 0,
-        },
-        {
-          picture: 'men3.jpg',
-          namePicture: 'Muska_odjeca1',
-          description: 'TEXTURED EASY CARE SHIRT',
-          price: 149.90,
-          id: 4,
-          category: 'men',
-          quantity: 0,
-        },
-        {
-          picture: 'men2.jpg',
-          namePicture: 'Muska_odjeca2',
-          description: 'HERRINGBONE PATTERNED SHIRT',
-          price: 499.90,
-          id: 5,
-          category: 'men',
-          quantity: 0,
-        },
-        {
-          picture: 'men1.jpg',
-          namePicture: 'Muska_odjeca3',
-          description: 'OVERSIZED COAT',
-          price: 1599.90,
-          id: 6,
-          category: 'men',
-          quantity: 0,
-        },
-        {
-          picture: 'children2.jpg',
-          namePicture: 'Djecja_odjeca1',
-          description: 'SPARKLY MOTORCYCLE JACKET',
-          price: 499.90,
-          id: 7,
-          category: 'children',
-          quantity: 0,
-        },
-        {
-          picture: 'children1.jpg',
-          namePicture: 'Djecja_odjeca2',
-          description: 'STAR-CAUSE DRESS',
-          price: 299.90,
-          id: 8,
-          category: 'children',
-          quantity: 0,
-        }
-      ]
-export default {
-  
-  data(){
-    return{
-      articlesNew: articles,
-      filtersApplied: {search:null, dropDownEl:'all'},
-      isActive: false,
-      verified: false,
-      basket:[],
-      quantity: 1,
-      basketQuantity: 0,
-    }
-  },
-   
-  name: 'App',
-  components: {
-    Filter,
-    Footer,
-    Artical,
-    Cart,
-  },
-  methods: {  
-    allFilters() {
-      if (this.filtersApplied.search) {
-        return this.articlesNew.filter(item => {
-          return this.filtersApplied.search
-            .toLowerCase()
-            .split(" ")
-            .every(v => item.description.toLowerCase().includes(v));
-        });
-      } 
-      if(this.filtersApplied.dropDownEl){
-        
-         if (this.filtersApplied.dropDownEl == 'all') 
-        {
-          this.articlesNew = articles;
-        }
-        else
-        {
-          let test = this.articlesNew
-              .filter((artical) => artical.category === this.filtersApplied.dropDownEl)
-            this.articlesNew = test;
-          }
-      }
-        return this.articlesNew;
-    },
-    addToBasket(artical){
-      if (this.basket.includes(artical)){
-        artical.quantity += 1;
-        this.basketQuantity +=1;
-      }
-      else{
-        this.basket.push(artical);
-        artical.quantity += 1;
-        this.basketQuantity +=1;
-      }
-    },
-    removeBasket(artical){
-      this.basket.splice(artical);
-    },
-    
-    processingButtonEvent({operacija, artical}){
-      console.log(operacija)
-      switch (operacija) {
-        case "clear":
-          this.removeBasket(this.basket)
-          break;
-      case "remove":
-         if (artical.quantity == 1){
-          // this.basket.splice(artical,1)
-          this.basket.splice(this.basket.indexOf(artical), 1);
-          this.basketQuantity -=1;
-        }
-        else{
-          artical.quantity -=1;
-          this.basketQuantity -=1;
-        }
-          break;
-        
-          // this.artical.splice(this.artical.indexOf(artical), 1);
-      }
-    },
-    dropDownFunction(value){
-      this.filtersApplied.dropDownEl = value;
-    },
-    searchFunction(value){
-      this.filtersApplied.search = value;
-    }
-    }};
 </script>
 <style>
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.header_body{
-  position: fixed;
-  width: 100%;
-  top: -22px;
-}
-.img-w-h{
-  width: 40px;
-  height: 30px;
-}
-h1 {
+.img1{
+  background-image:url('../assets/pictures/home_page.jpg');
+	justify-content: left;
   display: flex;
-  justify-content: center;
-  color:black;
-  border-style: outset;
-  /* border-left: 120px solid #f44336; */
-  letter-spacing: 10%;
-  background-color:whitesmoke;
-  } 
-  body {
-    background-image: linear-gradient(to right, rgb(255, 255, 255) , rgb(31, 30, 30));
-    
+	width: 700px;
+  height: 550px;
+  margin-top: 5%;
+  margin-left: 5%;
+  
+}
+.img2{
+   background-image:url('../assets/pictures/home_page3.jpg');
+	justify-content: left;
+  display: flex;
+	width: 700px;
+  height: 500px;
+  margin-top: 10%;
+  margin-left: 40%;
+}
+.btnH{
+    margin-left: -130%;
+    margin-top: auto;
   }
-
- .new_pages {
-  position: relative;
-  top: -75px;
-  display: flex;
-  justify-content: flex-end;
-  list-style-type: none;  
-  width: 200px;
-  height: 20px;
-  right: 2%;
-  flex-grow:3;
-}
-.body_h{
- display: flex;
- justify-content: space-between;
-}
-.all_img{
-  position: static;
-  display: inline-block;
-  left: 1%;
-
-}
-.btn{
-  border-radius: 10%;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background-color: rgba(255, 255, 255, 0.404);
-  color: black; 
-  border: 2px solid #f44336;
-  position: inherit;
-  display: inline;
-  left: 40%;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn:hover, .clear-button:hover, .buy-cart:hover {
-  background-color: #f44336;
+  .btn1{
+  background-color: darkgrey;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  font-size: 200%;
+  cursor: pointer;
+  margin-left: 240%;
+  width: 300%;
+  
 }
-.description, .price, .newsletter_lbl{
-  text-align: center;
+.btn1:hover{
+ background-color:  rgba(255, 255, 255, 0.404);
   color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  
 }
-
-.shopping-products{
-  width: 30%;
-  height: 20%;
-  display: inline-block;  
-  flex-wrap: wrap;
+h1{
+  
+  /* width: 20%;
+  justify-content: center; */
+  border-style: outset;
+  width: 40%;
+  margin-left: 30%;
 }
-.counter{
-  display: inline-block;
-  top: -60px;
+.shipping1{
+  margin-top: -5%;
+  background-color: darkgray;
+  text-align: center;
+  color: #fff;
 }
-.btn-cart {
-  border-radius: 10%;
-  background-color: #f44336;
-  margin-left: 7%;
-  justify-items: center;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  cursor: pointer;
+.txt{
+  margin-left: 110%;
+  margin-right: 50%;
+  font-size: 250%;
+  margin-top: 40%;
 }
-.btn-buy{
-  border-radius: 10%;
-  background-color: #2E8B57;
-  margin-left: 7%;
-  justify-items: center;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  cursor: pointer;
+.txt2{
+  margin-left: -65%;
+  font-size: 250%;
+  margin-top: -10%;
 }
-.btn-x{
-  border: none;
-  background-color: white;
-  float: right;
-  cursor: pointer;
-}
-.flag {
-    position: absolute;
-    top: 16px;
-    left: 99%;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    color: #fff;
-    text-align: center;
-    line-height: 20px;
-    background-color: #FC5951;
-    border-radius: 50%;
-}
-.div-basket{
-  position: absolute;
-  background: #fff;
-  border: 20px black;
-  width: 250px;
-  right: 1%;
-  font-size: 70%;
-}
-@media only screen and (max-width:480px) {
-  /* For mobile phones: */
-  .shopping-products {
-    width: 100%;
-    height: 20%;
-  }
-  .body{
-    width: max-content;
-  }}
-
-
-
-@media only screen and (max-width:480px) {
-  /* For mobile phones: */
-   h1 {
-    justify-content: left;
-  }
-    .header_body{
-    position: fixed;
-    width: 100%;
-    top: -22px;
-  }
-  .new_pages{
-    right: 10%;
-    position: relative;
-    top: -72px;
-  }
-   .search {
-    left: 37%;
-    width: 45%;
-    height: 22%;
-    top: -39px;
-  }
-   .all_img {
-    justify-items: center;
-    margin: 2%;
-    padding: 2%;
-  }
-   .dropdown {
-    width: 35%;
-    top: -22px;
-    font-size: small;
-    height: 32%;
-    text-align: -webkit-center;
-}
-  }
 </style>

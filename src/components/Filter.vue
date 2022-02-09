@@ -1,13 +1,18 @@
 <template>
-<div>
+  <div class="box">
     <select class="dropdown"  id='myDropdown' @change='swichDropDownValue($event)' >
         <option value="all" >All</option>
-        <option value="women">Women</option>
-        <option value="men">Men</option>
-        <option value="children">Children</option>
+        <option value="soaps">Soaps</option>
+        <option value="candles">Candles</option>
     </select>
-    <input class="search" v-model="searchInputData">
-</div>
+  </div>
+    <div class="box">
+      <div class="icon-search">
+        <fa icon="search"></fa>
+      <input class="search" v-model="searchInputData" placeholder="search.." >
+      </div>
+      
+    </div>
 </template>
 <script>
 export default{
@@ -33,25 +38,24 @@ export default{
 </script>
 <style>
 .search {
-    width: 65%;
-    position: relative;
+    /* position: relative;
     display: flex;
-    top: -70px;
-    left: 48%;
+    top: -20px;
+    left: 56%;
     height: 20%;
-    flex-grow: 0.2;
+    flex-grow: 0.2;*/
+    border-style: inset;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none; 
+} 
+.icon-search{
+  display: inline-flex;
 }
 .dropdown {
-  display: flex;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  width: 45%;
-  height: 20px;
-  position: relative;
-  top: -52px;
-  left: 1%;
-  justify-content: flex-start;
-  background-color:#f44336;
-  font-variant: small-caps;
-  flex-grow: 0.2;
+  
 }   
+div{
+  justify-content: left;
+}
 </style>
