@@ -28,7 +28,7 @@
 export default {
   name: "Cart",
   props: ['basket'],
-  emits: ['buttonEvent'],
+  emits: ['buttonEvent','quantity'],
   data() {
     return {
     };

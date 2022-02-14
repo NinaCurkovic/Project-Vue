@@ -11,7 +11,6 @@
         <fa icon="search"></fa>
       <input class="search" v-model="searchInputData" placeholder="search.." >
       </div>
-      
     </div>
 </template>
 <script>
@@ -52,9 +51,6 @@ export default{
 .icon-search{
   display: inline-flex;
 }
-.dropdown {
-  
-}   
 div{
   justify-content: left;
 }

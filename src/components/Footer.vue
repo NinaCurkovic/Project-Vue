@@ -88,5 +88,6 @@ export default{
 }
 .body-footer{
   background-color: darkgray;
+  
 }
 </style>

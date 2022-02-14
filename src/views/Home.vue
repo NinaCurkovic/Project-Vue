@@ -1,6 +1,6 @@
 <template>
-<div class="b">
-  <p class="shipping1"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
+<div class="header_body">
+  <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
     <h1>SOAPS & CANDLES</h1>
      <div class="home_help">
    </div>
@@ -10,9 +10,14 @@
      <div class="img2"><p class="txt2">JUST LIKE NATURE INTENDED</p></div>
       <br>
 </div>
+<Footer/>
 </template>
 <script>
-
+import Footer from '../components/Footer.vue'
+export default {
+  components: {
+    Footer
+  }}
 </script>
 <style>
 .img1{

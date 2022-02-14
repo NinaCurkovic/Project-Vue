@@ -3,11 +3,9 @@
     <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
     <h1>SOAPS & CANDLES</h1>
     <div class="body_h">
-      
         <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction" />
-        <div class="box1"> <router-link to="/" class="box">Home</router-link></div>
+        <div class="box1"><router-link to="/" class="box">Home</router-link></div>
       <div class="box1">
-        
         <li class="box"><router-link to="/signup">
             <!-- <fa icon="user" >LogIn</fa>  -->Login
             <!-- <img src="../assets/pictures/login.png" /> -->
@@ -30,7 +28,7 @@
             <Cart :basket="basket" @button-event="processingButtonEvent"/>
             <div class="total">Total price {{Number(totalPrice.toFixed(2))}} $</div>
           </div>
-          <div v-show="basketQuantity===0">
+          <div v-show="basketQuantity==0">
           </div>
           </div>
           </li>
@@ -41,13 +39,11 @@
 <div class="shopping-products"  v-for="artical in allFilters()" :key="artical.id">
   <button v-on:click="addToBasket(artical)" class="btn">Add to cart</button>
   <Artical :artical="artical"/>
-  
   <br>
   <br>
 </div>
 </div>
-<Footer/> 
-
+<Footer/>
 </template>
 <script>
 import Footer from '../components/Footer.vue'
@@ -246,7 +242,7 @@ export default {
       isActive: false,
       verified: false,
       basket:[],
-      quantity: 1,
+      quantity: 0,
       basketQuantity: 0,
       totalPrice: 0,
     }
@@ -270,8 +266,7 @@ export default {
         });
       } 
       if(this.filtersApplied.dropDownEl){
-        
-         if (this.filtersApplied.dropDownEl == 'all') 
+        if (this.filtersApplied.dropDownEl === 'all') 
         {
           this.articlesNew = articles;
         }
@@ -289,15 +284,12 @@ export default {
         artical.quantity += 1;
         this.basketQuantity +=1;
         this.totalPrice+=artical.price;
-        console.log(this.totalPrice)
       }
       else{
         this.basket.push(artical);
         artical.quantity += 1;
         this.basketQuantity +=1;
         this.totalPrice+=artical.price;
-        console.log(this.totalPrice)
-
       }
     },
     removeBasket(artical){
@@ -305,12 +297,12 @@ export default {
     },
     
     processingButtonEvent({operacija, artical}){
-      console.log(operacija)
       switch (operacija) {
         case "clear":
           this.removeBasket(this.basket)
           this.basketQuantity=0;
           this.totalPrice=0;
+          
           break;
       case "remove":
          if (artical.quantity == 1){
@@ -318,7 +310,6 @@ export default {
           this.basket.splice(this.basket.indexOf(artical), 1);
           this.basketQuantity -=1;
           this.totalPrice-=artical.price;
-        
         }
         else{
           artical.quantity -=1;
@@ -326,7 +317,6 @@ export default {
           this.totalPrice-=artical.price;
         }
           break;
-        
           // this.artical.splice(this.artical.indexOf(artical), 1);
       }
     },
@@ -346,10 +336,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  
 }
 .header_body{
-  position: fixed;
+  
   width: 100%;
   top: -3%;
   background-color: white;
@@ -371,15 +361,11 @@ export default {
   font-size: 150%;
 }
 .body_h{
- width: 100%;
- height: 25%;
- font-size: 150%;
+  font-size: 160%;
   list-style: none;
-
- display: grid;
- grid-template-columns: repeat(6, 1fr);
- 
- grid-column-gap: 50px;
+  display: flex;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: space-between;
 }
 .all_img{
   position: static;
@@ -388,7 +374,6 @@ export default {
   margin-top: 10%;
 }
 .btn{
-  
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: white; 
   cursor: pointer;
@@ -399,20 +384,21 @@ export default {
     border-right-style: none;
     border-bottom-style: solid;
     border-color: darkgray;
+    flex-wrap: wrap;
+    background-color: black;
 }
-.btn:hover{
+/* .btn:hover{
   background-color:  rgba(255, 255, 255, 0.404);
   color: black;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+} */
 .description, .price, .newsletter_lbl{
   text-align: center;
   color: black;
 }
-
 .shopping-products{
   width: 30%;
-  height: 350px;
+  aspect-ratio: 1;
   display: inline-block;  
   flex-wrap: wrap;
 }
@@ -439,45 +425,43 @@ export default {
   cursor: pointer;
 }
 .flag {
-    position: absolute;
-    left: 94%;
-    width: 20px;
-    height: 20px;
-    font-size: 14px;
+    position: sticky;
+    font-size: 12px;
     color: red;
-    text-align: center;
-    line-height: 18px;
-    margin-top: -1%;
+    display: -webkit-inline-box;
 }
+
 .div-basket{
   position: absolute;
-  background: #fff;
+  background: white;
   border: 20px black;
   width: 250px;
   right: 1%;
   font-size: 70%;
+  border: outset;
 }
 .total{
   font-size: 90%;
     text-align: center;
     margin-left: right;
     border-style: solid;
-  
 }
 thead{
   text-align: center;
 }
-@media only screen and (max-width:480px) {
-  /* For mobile phones: */
+
+
+/* /* @media only screen and (max-width:480px) {
+  
   .shopping-products {
     width: 100%;
     height: 20%;
   }
   .body{
     width: max-content;
-  }}
+  }} */
 @media only screen and (max-width:480px) {
-  /* For mobile phones: */
+ 
    h1 {
     justify-content: left;
   }
@@ -521,6 +505,8 @@ thead{
 .home-link-products{
   font-size: 25px;
 }
-
-  }
+.shipping{
+  margin-top: -2%;
+}
+}
 </style>
