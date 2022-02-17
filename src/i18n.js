@@ -7,7 +7,7 @@ import { createI18n } from 'vue-i18n'
  * See: https://github.com/intlify/vue-i18n-loader#rocket-i18n-resource-pre-compilation
  */
 function loadLocaleMessages() {
-  const locales = require.context('./src locales', true, /[A-Za-z0-9-_,\s]+\.json$/i)
+  const locales = require.context('./i18n', true, /[A-Za-z0-9-_,\s]+\.json$/i)
   const messages = {}
   locales.keys().forEach(key => {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
@@ -24,3 +24,16 @@ export default createI18n({
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages()
 })
+// import en from './i18n/en.json'
+
+// import { VueI18n } from 'vue-i18n'
+// import Vue from 'vue'
+
+// Vue.use(VueI18n);
+// export default new Vue({
+//   locale: localStorage.getItem('lang') || 'en',
+//   messages:{
+//     en: en,
+    
+//   }
+// })

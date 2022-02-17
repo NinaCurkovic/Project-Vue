@@ -10,6 +10,7 @@
      <div class="img2"><p class="txt2">JUST LIKE NATURE INTENDED</p></div>
       <br>
 </div>
+
 <Footer/>
 </template>
 <script>

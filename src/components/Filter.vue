@@ -1,6 +1,6 @@
 <template>
   <div class="item-b">
-    <select class="dropdown"  id='myDropdown' @change='swichDropDownValue($event)' >
+    <select @change='swichDropDownValue($event)' >
         <option value="all" >All</option>
         <option value="soaps">Soaps</option>
         <option value="candles">Candles</option>

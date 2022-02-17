@@ -1,8 +1,8 @@
 <template>
 <div class="header_body">
     <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1 class="h1"><img src="../assets/pictures/SIGN-IN-NASLOV.jpg"></h1>
-    <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
+    <h1 class="h1"><img src="../assets/pictures/naslov-signin.jpg"></h1>
+    <router-link to="/" class="home-link-signin"><fa icon="home"></fa></router-link>
 </div>
     
     <form>
@@ -37,12 +37,11 @@
 export default {
     setup() {
         return{
-            
         }
     },
     methods: {
         showMessage(){
-                alert("Hello friends, ");
+                alert("Hello!");
             }
     }
 }
@@ -51,7 +50,7 @@ export default {
 .sign_up{
     display: grid;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .sirina{
     text-align: center;
@@ -61,6 +60,13 @@ export default {
    display: grid;
    justify-content: left;
    margin-left: 35%;
+}
+.home-link-signin{
+    display: flex;
+  justify-content: left;
+  margin-top: -6.5%;
+  margin-left: 33%;
+  font-size: 25px;
 }
 /* .btn-signup{
    display: grid;
