@@ -1,9 +1,10 @@
 <template>
 <div class="header_body">
     <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1>SOAPS & CANDLES</h1>
+    <h1><img src="../assets/pictures/naslov1.jpg"></h1>
     <div class="body_h">
         <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction" />
+        
         <div class="box1"><router-link to="/" class="box">Home</router-link></div>
       <div class="box1">
         <li class="box"><router-link to="/signup">
@@ -35,6 +36,8 @@
         </div>
       </div>
   </div>
+  <Multilngual/>
+  <SwitchLanguage/>
 <div  class="all_img" id="all_product" >
 <div class="shopping-products"  v-for="artical in allFilters()" :key="artical.id">
   <button v-on:click="addToBasket(artical)" class="btn">Add to cart</button>
@@ -50,6 +53,8 @@ import Footer from '../components/Footer.vue'
 import Artical from '../components/Artical.vue';
 import Cart from '../components/Cart.vue';
 import Filter from '../components/Filter.vue';
+
+
 
 
  const articles = [
@@ -254,7 +259,8 @@ export default {
     Footer,
     Artical,
     Cart,
-  },
+ 
+    },
   methods: {  
     allFilters() {
       if (this.filtersApplied.search) {
@@ -270,12 +276,11 @@ export default {
         {
           this.articlesNew = articles;
         }
-        else
-        {
-          let test = this.articlesNew
+        else{
+           let test = articles
               .filter((artical) => artical.category === this.filtersApplied.dropDownEl)
             this.articlesNew = test;
-          }
+        }
       }
         return this.articlesNew;
     },
@@ -294,6 +299,7 @@ export default {
     },
     removeBasket(artical){
       this.basket.splice(artical);
+      this.quantity=0;
     },
     
     processingButtonEvent({operacija, artical}){
@@ -305,7 +311,7 @@ export default {
           
           break;
       case "remove":
-         if (artical.quantity == 1){
+         if (artical.quantity ===0){
           // this.basket.splice(artical,1)
           this.basket.splice(this.basket.indexOf(artical), 1);
           this.basketQuantity -=1;
@@ -386,12 +392,13 @@ export default {
     border-color: darkgray;
     flex-wrap: wrap;
     background-color: black;
+    border-color: black;
 }
-/* .btn:hover{
-  background-color:  rgba(255, 255, 255, 0.404);
+.btn:hover{
+  background-color: #f4f6f3;
   color: black;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-} */
+}
 .description, .price, .newsletter_lbl{
   text-align: center;
   color: black;
@@ -420,25 +427,28 @@ export default {
 }
 .btn-x{
   border: none;
-  background-color: white;
+  background-color: darkgrey;
   float: right;
   cursor: pointer;
+  
 }
 .flag {
-    position: sticky;
+    position: fixed;
     font-size: 12px;
-    color: red;
-    display: -webkit-inline-box;
+    color: white;
+    margin-top: -1.4%;
+    margin-left: 0.65%;
 }
 
 .div-basket{
   position: absolute;
-  background: white;
+  background: #a9a9a9;
   border: 20px black;
   width: 250px;
   right: 1%;
   font-size: 70%;
   border: outset;
+  color: white;
 }
 .total{
   font-size: 90%;

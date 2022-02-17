@@ -1,7 +1,7 @@
 <template>
 <div class="header_body">
   <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1 class="h1">INFO</h1>
+    <h1 class="h1"><img src="../assets/pictures/BLOG-NASLOV.jpg"></h1>
     <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
 </div>
   <!-- <div class="home_help">
@@ -41,9 +41,8 @@ export default {
 .home-link{
   display: flex;
   justify-content: left;
-  margin-top: -50px;
+  margin-top: -10%;
   margin-left: 20px;
-  font-variant: small-caps;
   font-size: 25px;
 }
 .btn2{

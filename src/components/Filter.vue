@@ -1,12 +1,12 @@
 <template>
-  <div class="box">
+  <div class="item-b">
     <select class="dropdown"  id='myDropdown' @change='swichDropDownValue($event)' >
         <option value="all" >All</option>
         <option value="soaps">Soaps</option>
         <option value="candles">Candles</option>
     </select>
   </div>
-    <div class="box">
+    <div class="item-b">
       <div class="icon-search">
         <fa icon="search"></fa>
       <input class="search" v-model="searchInputData" placeholder="search.." >
@@ -14,10 +14,10 @@
     </div>
 </template>
 <script>
-export default{
+export default {
 	name:"Filter",
 	props: ['artical'],
-
+  
     data() {
     return {
       searchInputData: '',
@@ -31,9 +31,8 @@ export default{
     watch: {
       searchInputData(newValue){
         this.$emit("filterSearch",newValue)
-      }
-    }
-  }
+      }}
+}
 </script>
 <style>
 .search {

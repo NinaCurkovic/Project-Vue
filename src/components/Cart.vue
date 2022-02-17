@@ -3,20 +3,20 @@
     <table class="table">
       <thead>
         <tr>
-        <th>PROIZVOD</th>
-        <th>CIJENA</th>
+        <th>Product</th>
+        <th>Price</th>
         </tr>
         </thead>
         <tbody v-for="artical in basket" :key="artical.id">
           <tr>
           <th>{{artical.quantity}}x {{artical.description}}</th>
           <th>{{artical.price}}</th>
-          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x" ><fa icon="trash"></fa></button></th>
+          <th><button @click='$emit("buttonEvent",{operacija:"remove", artical:artical})' class="btn-x" ><fa icon="trash" class="kantica"></fa></button></th>
           </tr>
         </tbody>
         <div class="two-btn">
           <button class="btn-buy" >Buy</button>
-          <button @click='$emit("buttonEvent",{operacija:"clear"})' class="btn-cart">Clear</button>
+          <button @click='$emit("buttonEvent",{operacija:"clear",artical})' class="btn-cart">Clear</button>
         </div>
         
         
@@ -27,8 +27,8 @@
 <script>
 export default {
   name: "Cart",
-  props: ['basket'],
-  emits: ['buttonEvent','quantity'],
+  props: ['basket', 'quantity'],
+  emits: ['buttonEvent'],
   data() {
     return {
     };
@@ -48,5 +48,9 @@ export default {
   justify-items: center;
   font-family: Arial, Helvetica, sans-serif;
   
+}
+.kantica{
+  background: transparent;
+  color: white;
 }
 </style>

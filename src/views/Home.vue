@@ -1,7 +1,7 @@
 <template>
 <div class="header_body">
   <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1>SOAPS & CANDLES</h1>
+    <h1><img src="../assets/pictures/naslov1.jpg"></h1>
      <div class="home_help">
    </div>
       <div class="img1"><p class="txt">HANDCRAFTED ORGANIC SOAPS & CANDLES</p>
@@ -63,9 +63,8 @@ h1{
   
   /* width: 20%;
   justify-content: center; */
-  border-style: outset;
-  width: 40%;
-  margin-left: 30%;
+  display: grid;
+  justify-content: center;
 }
 .shipping1{
   margin-top: -5%;
