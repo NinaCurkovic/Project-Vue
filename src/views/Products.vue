@@ -1,7 +1,7 @@
 <template>
 <div class="header_body">
     <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1><img src="../assets/pictures/naslov1.jpg"></h1>
+    <h1><img src="../assets/pictures/naslov1.jpg" class="img-naslov-products"></h1>
     <div class="body_h">
         <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction" />
         
@@ -19,7 +19,7 @@
             </router-link>
         </li>
         </div>
-        <div class="box1">
+        <div class="box1-cart">
           <li>
           <fa icon="shopping-bag" @click="isActive = !isActive" v-show="!verified" >
           </fa>
@@ -345,11 +345,11 @@ export default {
   
 }
 .header_body{
-  
+  position: fixed;
   width: 100%;
-  top: -3%;
+  top: -2%;
   background-color: white;
-  height: 25%;
+  
 }
 .shipping{
   background-color: darkgray;
@@ -377,7 +377,7 @@ export default {
   position: static;
   display: inline-block;
   left: 1%;
-  margin-top: 10%;
+  margin-top: 22%;
 }
 .btn{
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -459,7 +459,9 @@ export default {
 thead{
   text-align: center;
 }
-
+.box1-cart{
+  margin-right: 5%;
+}
 
 /* /* @media only screen and (max-width:480px) {
   
@@ -471,7 +473,14 @@ thead{
     width: max-content;
   }} */
 @media only screen and (max-width:480px) {
- 
+  #app{
+    overflow: hidden;
+  }
+ .img-naslov-products{
+   width: 100%;
+   height: 80%;
+   margin-left: 10%;
+ }
    h1 {
     justify-content: left;
   }
@@ -515,8 +524,23 @@ thead{
 .home-link-products{
   font-size: 25px;
 }
-.shipping{
-  margin-top: -2%;
+.shopping-products{
+    width: 100%;
+    aspect-ratio: 1;
+    display: inline-block;
+    flex-wrap: wrap;
+    margin-top: 0%;
 }
+.btn:hover{
+  background-color: #f4f6f3;
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
+.flag{
+  margin-top: -3.5%;
+    /* color: red; */
+    margin-left: 1.6%;}
+    
+.body_h{
+      font-size: 150%;}}
 </style>

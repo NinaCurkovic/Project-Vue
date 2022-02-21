@@ -50,7 +50,9 @@ export default {
   
 }
 .kantica{
-  background: transparent;
-  color: white;
+  background: lightgray;
+  
+
+  
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
+<div class="two-filter">
   <div class="item-b">
-    <select @change='swichDropDownValue($event)' >
+    <select @change='swichDropDownValue($event)' class="dropdown" >
         <option value="all" >All</option>
         <option value="soaps">Soaps</option>
         <option value="candles">Candles</option>
@@ -12,6 +13,8 @@
       <input class="search" v-model="searchInputData" placeholder="search.." >
       </div>
     </div>
+</div>
+  
 </template>
 <script>
 export default {
@@ -49,8 +52,32 @@ export default {
 } 
 .icon-search{
   display: inline-flex;
+  margin-left: 125%;
 }
 div{
   justify-content: left;
+}
+.two-filter{
+  display: inline-flex;
+    /* justify-content: center; */
+    /* align-content: stretch; */
+    margin-top: -6.1%;
+    /* justify-items: center; */
+    margin-left: 33%;
+}
+.dropdown{
+  border-style: none;
+    width: 120%;
+    height: 18%;
+    text-align: center;
+}
+@media only screen and (max-width:480px) {
+  .dropdown{width: 600%;}
+  .two-filter{
+    margin-left: 40%;
+  }
+  .icon-search{
+    
+  }
 }
 </style>

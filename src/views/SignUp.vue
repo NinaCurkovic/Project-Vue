@@ -1,7 +1,7 @@
 <template>
 <div class="header_body">
     <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1 class="h1"><img src="../assets/pictures/naslov-signin.jpg"></h1>
+    <h1 class="h1"><img src="../assets/pictures/naslov-signin.jpg" class="img-naslov-signin"></h1>
     <router-link to="/" class="home-link-signin"><fa icon="home"></fa></router-link>
 </div>
     
@@ -50,7 +50,7 @@ export default {
 .sign_up{
     display: grid;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 17%;
 }
 .sirina{
     text-align: center;
@@ -109,5 +109,21 @@ export default {
 }
 .linkovi{
     display: inline;
+}
+@media only screen and (max-width:480px) {
+    .img-naslov-signin{
+       width: 70%;
+    /* height: 30%; */
+    margin-left: 10%;
+    margin-top: 20%;
+    }
+    .home-link-signin{
+        margin-left: 18%;
+    margin-top: -12%;
+    }
+    .shipping-signin{
+        margin-top: -2%;
+    }
+
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-<div class="header_body">
+<div >
   <p class="shipping"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
-    <h1><img src="../assets/pictures/naslov1.jpg"></h1>
+    <h1><img src="../assets/pictures/naslov1.jpg" class="img-naslov-home"></h1>
      <div class="home_help">
    </div>
       <div class="img1"><p class="txt">HANDCRAFTED ORGANIC SOAPS & CANDLES</p>
@@ -11,13 +11,13 @@
       <br>
 </div>
 
-<Footer/>
+<!-- <Footer/> -->
 </template>
 <script>
-import Footer from '../components/Footer.vue'
+// import Footer from '../components/Footer.vue'
 export default {
   components: {
-    Footer
+    // Footer
   }}
 </script>
 <style>
@@ -67,8 +67,8 @@ h1{
   display: grid;
   justify-content: center;
 }
-.shipping1{
-  margin-top: -5%;
+.shipping{
+  margin-top: 1%;
   background-color: darkgray;
   text-align: center;
   color: #fff;
@@ -83,5 +83,46 @@ h1{
   margin-left: -65%;
   font-size: 250%;
   margin-top: -10%;
+}
+@media only screen and (max-width:480px) {
+  .img-naslov-home{
+    
+    width: 60%;
+    /* display: grid; */
+    /* justify-content: center; */
+    /* align-content: stretch; */
+    margin-left: 25%;
+  }
+  .shipping {
+    font-size: 70%;
+}
+.img1{
+  width: 50%;
+    height: 20%;
+}
+.img2{
+  width: 100%;
+  height: 250px;
+  
+}
+.txt{
+  margin-top: 30%;
+  font-size: 120%;
+}
+.btn1{
+  font-size: 80%;
+    margin-left: 70%;
+}
+.txt2{
+  font-size: 70%;
+    margin-top: 2%;
+    /* margin-right: 40%; */
+    margin-left: -39%;
+}
+.sign_up{
+      display: grid;
+    justify-content: center;
+    margin-top: 17%;
+}
 }
 </style>

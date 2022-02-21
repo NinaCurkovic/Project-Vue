@@ -1,7 +1,7 @@
 <template>
 <div class="header_body">
   <p class="shipping"><b>{{$t('free')}}</b></p>
-    <h1 class="h1"><img src="../assets/pictures/BLOG-NASLOV.jpg"></h1>
+    <h1 class="h1"><img src="../assets/pictures/BLOG-NASLOV.jpg" class="img-naslov-signin"></h1>
     <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
 </div>
 <label for="locale"></label>
@@ -81,7 +81,7 @@ export default {
     overflow: hidden;
   }
 .img-info{
-  margin-top: 7%;
+  margin-top:17%;
   }
 .p{
   text-align: justify;
@@ -96,8 +96,8 @@ export default {
     width: 8%;
     /* margin-right: 2%; */
     margin-left: 61%;
-    position: sticky;
-    margin-top: -1.5%;
+    position: fixed;
+    margin-top: 12%;
     border-style: none;
     
 }
@@ -114,7 +114,9 @@ export default {
   .home-link{
     font-size: 7px;
   }
-  
+  .home-help{
+    overflow: hidden;
+  }
   }
 </style>
 <i18n>
