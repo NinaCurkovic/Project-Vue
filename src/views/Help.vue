@@ -2,13 +2,20 @@
 <div class="header_body">
   <p class="shipping"><b>{{$t('free')}}</b></p>
     <h1 class="h1"><img src="../assets/pictures/BLOG-NASLOV.jpg" class="img-naslov-signin"></h1>
-    <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
-</div>
-<label for="locale"></label>
-  <select v-model="$i18n.locale" class="jezik" >
-    <option value="en">English</option>
-    <option value="hr">Croatia</option>
-  </select>
+    </div>
+    <div class="grid-container2">
+      <div class="boxx">
+        <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
+      </div>
+      <div class="boxx">
+        <select v-model="$i18n.locale" class="jezik" >
+        <option value="en">English</option>
+        <option value="hr">Croatia</option>
+      </select>
+      </div>
+      
+    </div>
+    
   <div class="grid-container">
       <div class="grid-item">
         <img src="../assets/pictures/info1.jpg" class="img-info"/>
@@ -16,13 +23,11 @@
      </div > 
      <div class="grid-item">
        <p class="txt3">{{$t('h1')}}</p> 
-       <!-- <router-link to="/products"><button class="btn2" >Shop Soaps</button></router-link> --> 
        <p class="p">{{$t('paragraf1')}}</p>
      </div>
       <br>
       <div class="grid-item">
         <img src="../assets/pictures/info2.jpg" class="img-info"> 
-     <!-- <router-link to="/products" ><button class="btn3">Shop Candles</button></router-link> --> 
      </div> 
      <div class="grid-item">
        <p class="txt3">{{$t('h2')}}</p><p></p>
@@ -44,11 +49,9 @@ export default {
 </script>
 <style>
 .home-link{
-  display: flex;
-  justify-content: left;
-  margin-top: -6.5%;
-  margin-left: 35%;
   font-size: 25px;
+  color: black;
+  position: fixed;
 }
 .btn2{
   background-color: darkgrey;
@@ -67,7 +70,7 @@ export default {
   margin-left: -535%;
 }
 .btn2:hover, .btn3:hover{
- background-color:  rgba(255, 255, 255, 0.404);
+  background-color:  rgba(255, 255, 255, 0.404);
   color: black;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -78,7 +81,7 @@ export default {
   color: #fff;
 }
 .home-help{
-    overflow: hidden;
+  overflow: hidden;
   }
 .img-info{
   margin-top:17%;
@@ -90,16 +93,18 @@ export default {
   margin-right: 10%;
 }
 .jezik{
-    /* justify-content: right; */
-    display: grid;
-    /* justify-content: right; */
-    width: 8%;
-    /* margin-right: 2%; */
-    margin-left: 61%;
-    position: fixed;
-    margin-top: 12%;
-    border-style: none;
-    
+  display: grid;
+  width: 8%;
+  position: fixed;
+  border-style: none;
+}
+.grid-container2{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  margin-top: 12%;
+  margin-left: 17%;
+  grid-column-gap: 13%;
 }
 @media only screen and (max-width:480px) {
   /* For mobile phones: */
@@ -109,13 +114,17 @@ export default {
   }
   .h1{
     font-size: 80%;
-    margin-top: -23%;
+    margin-top: -22%;
   }
   .home-link{
-    font-size: 7px;
+    margin-left: -10%;
+    margin-top: -2%;
   }
   .home-help{
     overflow: hidden;
+  }
+  .jezik{
+    width: 60%;
   }
   }
 </style>

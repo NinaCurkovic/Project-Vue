@@ -5,23 +5,18 @@
     <div class="body_h">
         <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction" />
         
-        <div class="box1"><router-link to="/" class="box">Home</router-link></div>
+        <div class="box1"><router-link to="/" class="box-home">Home</router-link></div>
       <div class="box1">
-        <li class="box"><router-link to="/signup">
-            <!-- <fa icon="user" >LogIn</fa>  -->Login
-            <!-- <img src="../assets/pictures/login.png" /> -->
-            </router-link>
+        <li class="box"><router-link to="/signup" class="box-home">Login</router-link>
         </li></div>
         <div class="box1">
-          <li class="box"><router-link to="/help"> Blog
-            <!-- <fa icon="info" ></fa>  -->
-            <!-- <img src="../assets/pictures/help2.png"  -->
+          <li class="box"><router-link to="/help" class="box-home"> Blog
             </router-link>
         </li>
         </div>
         <div class="box1-cart">
           <li>
-          <fa icon="shopping-bag" @click="isActive = !isActive" v-show="!verified" >
+          <fa icon="shopping-bag" @click="isActive = !isActive" v-show="!verified" class="shop-bag" >
           </fa>
           <p class="flag"> {{ basketQuantity }}</p>
           <div v-show="isActive">
@@ -53,9 +48,6 @@ import Footer from '../components/Footer.vue'
 import Artical from '../components/Artical.vue';
 import Cart from '../components/Cart.vue';
 import Filter from '../components/Filter.vue';
-
-
-
 
  const articles = [
         {
@@ -311,8 +303,7 @@ export default {
           
           break;
       case "remove":
-         if (artical.quantity ===0){
-          // this.basket.splice(artical,1)
+         if (artical.quantity ===1){
           this.basket.splice(this.basket.indexOf(artical), 1);
           this.basketQuantity -=1;
           this.totalPrice-=artical.price;
@@ -323,7 +314,6 @@ export default {
           this.totalPrice-=artical.price;
         }
           break;
-          // this.artical.splice(this.artical.indexOf(artical), 1);
       }
     },
     dropDownFunction(value){
@@ -342,20 +332,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .header_body{
   position: fixed;
   width: 100%;
   top: -2%;
   background-color: white;
-  
 }
 .shipping{
   background-color: darkgray;
   text-align: center;
   color: #fff;
-  
 }
  .new_pages {
   top: -20px;
@@ -383,16 +372,16 @@ export default {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: white; 
   cursor: pointer;
-    width: 80%;
-    height: 20%;
-    border-top-style: none;
-    border-left-style: none;
-    border-right-style: none;
-    border-bottom-style: solid;
-    border-color: darkgray;
-    flex-wrap: wrap;
-    background-color: black;
-    border-color: black;
+  width: 80%;
+  height: 20%;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-color: darkgray;
+  flex-wrap: wrap;
+  background-color: black;
+  border-color: black;
 }
 .btn:hover{
   background-color: #f4f6f3;
@@ -430,7 +419,6 @@ export default {
   background-color: darkgrey;
   float: right;
   cursor: pointer;
-  
 }
 .flag {
     position: fixed;
@@ -439,7 +427,6 @@ export default {
     margin-top: -1.4%;
     margin-left: 0.65%;
 }
-
 .div-basket{
   position: absolute;
   background: #a9a9a9;
@@ -462,55 +449,57 @@ thead{
 .box1-cart{
   margin-right: 5%;
 }
-
-/* /* @media only screen and (max-width:480px) {
-  
-  .shopping-products {
-    width: 100%;
-    height: 20%;
-  }
-  .body{
-    width: max-content;
-  }} */
+.box-home{
+  text-decoration: wavy;
+  font-variant: small-caps;
+  font-family: petemoss;
+  color: black;
+  font-weight: bold;
+}
+.box-home:hover{
+  color: darkgray;
+}
+.shop-bag{
+  color: black;
+}
 @media only screen and (max-width:480px) {
-  #app{
-    overflow: hidden;
-  }
- .img-naslov-products{
-   width: 100%;
-   height: 80%;
-   margin-left: 10%;
- }
-   h1 {
-    justify-content: left;
-  }
-    .header_body{
-    position: fixed;
-    width: 100%;
-    top: -22px;
-  }
-  .new_pages{
-    right: 10%;
-    position: relative;
-    top: -72px;
-  }
-   .search {
-    left: 37%;
-    width: 45%;
-    height: 22%;
-    top: -39px;
-  }
-   .all_img {
-    justify-items: center;
-    margin: 2%;
-    padding: 2%;
-  }
-   .dropdown {
-    width: 35%;
-    top: -22px;
-    font-size: small;
-    height: 32%;
-    text-align: -webkit-center;
+#app{
+  overflow: hidden;
+}
+.img-naslov-products{
+  width: 100%;
+  height: 80%;
+  margin-left: 10%;
+}
+h1 {
+  justify-content: left;
+}
+.header_body{
+  position: fixed;
+  width: 100%;
+  top: -22px;
+}
+.new_pages{
+  right: 10%;
+  position: relative;
+  top: -72px;
+}
+.search {
+  left: 37%;
+  width: 45%;
+  height: 22%;
+  top: -39px;
+}
+.all_img {
+  justify-items: center;
+  margin: 2%;
+  padding: 2%;
+  margin-top: 40%;
+}
+.dropdown {
+  width: 220%;
+  height: 32%;
+  margin-top: 130%;
 }
 .img-user{
   font-size: 25px;
@@ -520,6 +509,7 @@ thead{
 }
 .img-info{
   font-size: 25px;
+  margin-top: 25%;
 }
 .home-link-products{
   font-size: 25px;
@@ -529,7 +519,6 @@ thead{
     aspect-ratio: 1;
     display: inline-block;
     flex-wrap: wrap;
-    margin-top: 0%;
 }
 .btn:hover{
   background-color: #f4f6f3;
@@ -538,9 +527,8 @@ thead{
 }
 .flag{
   margin-top: -3.5%;
-    /* color: red; */
-    margin-left: 1.6%;}
-    
+  margin-left: 1.2%;}
 .body_h{
-      font-size: 150%;}}
+  font-size: 120%;
+}}
 </style>

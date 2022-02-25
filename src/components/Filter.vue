@@ -9,7 +9,7 @@
   </div>
     <div class="item-b">
       <div class="icon-search">
-        <fa icon="search"></fa>
+        <fa icon="search" class="ic-search"></fa>
       <input class="search" v-model="searchInputData" placeholder="search.." >
       </div>
     </div>
@@ -39,45 +39,43 @@ export default {
 </script>
 <style>
 .search {
-    /* position: relative;
-    display: flex;
-    top: -20px;
-    left: 56%;
-    height: 20%;
-    flex-grow: 0.2;*/
-    border-style: inset;
-    border-top-style: none;
-    border-left-style: none;
-    border-right-style: none; 
+  border-style: inset;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none; 
 } 
 .icon-search{
   display: inline-flex;
   margin-left: 125%;
+  color: black;
 }
 div{
   justify-content: left;
 }
 .two-filter{
   display: inline-flex;
-    /* justify-content: center; */
-    /* align-content: stretch; */
-    margin-top: -6.1%;
-    /* justify-items: center; */
-    margin-left: 33%;
+  margin-top: -6.1%;
+  margin-left: 33%;
 }
 .dropdown{
   border-style: none;
-    width: 120%;
-    height: 18%;
-    text-align: center;
+  width: 120%;
+  height: 18%;
+  text-align: center;
+  font-variant: small-caps;
+  font-family: petemoss;
 }
 @media only screen and (max-width:480px) {
-  .dropdown{width: 600%;}
+  
   .two-filter{
     margin-left: 40%;
   }
+  .ic-search{
+    font-size: 70%;
+  }
   .icon-search{
-    
+    margin-left: -300%;
+    margin-top: 50%;
   }
 }
 </style>
