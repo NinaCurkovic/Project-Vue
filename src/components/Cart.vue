@@ -15,7 +15,7 @@
           </tr>
         </tbody>
         <div class="two-btn">
-          <button class="btn-buy" >Buy</button>
+          <button class="btn-buy"  v-on:click="showMessage" >Buy</button>
           <button @click='$emit("buttonEvent",{operacija:"clear",artical})' class="btn-cart">Clear</button>
         </div>
         
@@ -33,7 +33,11 @@ export default {
     return {
     };
   },
-  
+  methods: {
+        showMessage(){
+                alert("Thank you for purchase!");
+            }
+    }
 };
 </script>
 

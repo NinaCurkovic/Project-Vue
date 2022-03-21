@@ -6,23 +6,23 @@
     <form id="mail" @submit.prevent="submitForm">
         <label for="email1" class="newsletter_lbl"><b>Sing up for our newsletter:</b></label><br><br>
         <input type="email" name="email" id="email1" placeholder="Enter your address here" class="newsletter-input" v-model="nameLabel" >
-        <button class="newsletter-btn">Submit</button>
+        <button class="newsletter-btn" name="newsletterBtn">Submit</button>
         <p v-if="emailValidation === 'invalid'" style="color: red">Please enter a valid email</p>
-        <p v-if="emailValidation === 'valid'" style="color: green">Thank you!</p>
+        <p v-if="emailValidation === 'valid'" style="color: green" name="labelaNewsletter">Thank you!</p>
     </form> 
     <br>
     <div>
     <div>
         <div class="soc_mreze">
-            <a href="https://www.facebook.com/Zara">
+            <a href="https://www.facebook.com">
             <img src="../assets/pictures/facebook.png" class="fb-img"></a><br>
         </div> 
         <div class="soc_mreze">
-            <a href="https://www.instagram.com/accounts/login/">
+            <a href="https://www.instagram.com">
             <img src="../assets/pictures/instagram.png" class="insta-img"></a><br>
         </div> 
         <div class="soc_mreze">
-            <a href="https://consent.youtube.com/ml?continue=https://www.youtube.com/user/zara&gl=HR&hl=en&pc=yt&uxe=23983171&src=1">
+            <a href="https://www.youtube.com/">
             <img src="../assets/pictures/youtube-logo.png" class="yt-img"></a><br>
         </div>
     </div>

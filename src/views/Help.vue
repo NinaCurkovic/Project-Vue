@@ -8,7 +8,7 @@
         <router-link to="/" class="home-link"><fa icon="home"></fa></router-link>
       </div>
       <div class="boxx">
-        <select v-model="$i18n.locale" class="jezik" >
+        <select v-model="$i18n.locale" class="jezik" name="jezik_dropdown" >
         <option value="en">English</option>
         <option value="hr">Croatia</option>
       </select>
@@ -22,7 +22,7 @@
      
      </div > 
      <div class="grid-item">
-       <p class="txt3">{{$t('h1')}}</p> 
+       <p class="txt3" name="naslov_sapuni">{{$t('h1')}}</p> 
        <p class="p">{{$t('paragraf1')}}</p>
      </div>
       <br>

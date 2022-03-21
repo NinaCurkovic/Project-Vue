@@ -5,16 +5,16 @@
     <div class="body_h">
         <Filter @filterDropDown="dropDownFunction" @filterSearch="searchFunction" />
         
-        <div class="box1"><router-link to="/" class="box-home">Home</router-link></div>
-      <div class="box1">
-        <li class="box"><router-link to="/signup" class="box-home">Login</router-link>
+        <div class="box1" id="home"><router-link to="/" class="box-home">Home</router-link></div>
+      <div class="box1" id="login">
+        <li class="box" ><router-link to="/signup" class="box-home">Login</router-link>
         </li></div>
-        <div class="box1">
-          <li class="box"><router-link to="/help" class="box-home"> Blog
+        <div class="box1" id="blog">
+          <li class="box" ><router-link to="/help" class="box-home"> Blog
             </router-link>
         </li>
         </div>
-        <div class="box1-cart">
+        <div class="box1-cart" id="button-cart">
           <li>
           <fa icon="shopping-bag" @click="isActive = !isActive" v-show="!verified" class="shop-bag" >
           </fa>

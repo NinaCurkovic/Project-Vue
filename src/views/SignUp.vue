@@ -9,12 +9,12 @@
       <div class="sign_up">
           <div>
               <p class="two-name">Email</p>
-              <input type="email">
+              <input type="email" name="emailField">
               <p class="two-name">Password</p>
-              <input type="password">
+              <input type="password" name="passwordField">
           </div> 
           <div class="btn-signup">
-              <button class="btn-s" v-on:click="showMessage">Sign In</button>
+              <button class="btn-s" v-on:click="showMessage" name="btnLogin">Sign In</button>
           </div>
           <img src="../assets/pictures/sign-up.jpg" class="fb">
           <div class="linkovi">

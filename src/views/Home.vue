@@ -1,13 +1,13 @@
 <template>
 <div >
-  <p class="shipping2"><b>FREE SHIPPING ON ORDERS OVER 50$</b></p>
+  <p class="shipping2">FREE SHIPPING ON ORDERS OVER 50$</p>
     <h1><img src="../assets/pictures/naslov1.jpg" class="img-naslov-home"></h1>
      <div class="home_help">
    </div>
    <div>
     <img src="../assets/pictures/home_page.jpg" class="img1">
     <p class="txt">HANDCRAFTED ORGANIC </p><p class="txt-part2"> SOAPS & CANDLES</p>
-    <router-link to="/products" class="btnH"><button class="btn1">Shop Now</button></router-link>
+    <router-link to="/products" class="btnH"><button class="btn1" id="button1">Shop Now</button></router-link>
    </div>
      <p class="txt2">JUST LIKE </p><p class="txt2-part2">NATURE INTENDED</p>
      <video class="video1" controls>

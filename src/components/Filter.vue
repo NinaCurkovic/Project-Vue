@@ -1,7 +1,7 @@
 <template>
 <div class="two-filter">
   <div class="item-b">
-    <select @change='swichDropDownValue($event)' class="dropdown" >
+    <select @change='swichDropDownValue($event)' class="dropdown" name="dropDownMenu" >
         <option value="all" >All</option>
         <option value="soaps">Soaps</option>
         <option value="candles">Candles</option>
@@ -10,7 +10,7 @@
     <div class="item-b">
       <div class="icon-search">
         <fa icon="search" class="ic-search"></fa>
-      <input class="search" v-model="searchInputData" placeholder="search.." >
+      <input class="search" v-model="searchInputData" placeholder="search.." name="search">
       </div>
     </div>
 </div>
